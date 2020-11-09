@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="paused" default="true"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+    <arg name="model" default="$(find nanny_description)/urdf/coach_nanny.xacro"/>
+    <arg name="rvizconfig" default="$(find nanny_rviz)/coach_rviz_config.rviz" />
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 1.0 -unpause -urdf -model nanny -param robot_description" respawn="false" output="screen" />
+
+    <rosparam file="$(find nanny_control)/config/coach_nanny_diff_drive.yaml" command="load" ns="nanny_diff_drive_ctrl" />
+
+    <node name="nanny_controller_spawner" pkg="controller_manager" type="spawner" args="nanny_diff_drive_ctrl" />
+
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+        <param name="default_topic" value="/nanny_diff_drive_ctrl/cmd_vel"/>
+    </node>
+
+</launch>
