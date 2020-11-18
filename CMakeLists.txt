@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(nanny_bringup)
 
-find_package(catkin REQUIRED COMPONENTS geometry_msgs roscpp tf)
+find_package(catkin REQUIRED COMPONENTS geometry_msgs roscpp tf tf2_ros)
 
 catkin_package()
 

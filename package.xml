@@ -26,6 +26,8 @@
   <exec_depend>gazebo</exec_depend>
   <exec_depend>xacro</exec_depend>
 
+  <depend>turtlesim</depend>
+
   <depend>roscpp</depend>
   <depend>rospy</depend>
   <depend>std_msgs</depend>
