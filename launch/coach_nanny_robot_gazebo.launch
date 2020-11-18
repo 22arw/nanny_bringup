@@ -14,11 +14,12 @@
     <arg name="paused" value="$(arg paused)"/>
     <arg name="use_sim_time" value="$(arg use_sim_time)"/>
     <arg name="headless" value="$(arg headless)"/>
+    <arg name="world_name" value="$(find nanny_gazebo)/worlds/starting_pen.world"/>
   </include>
 
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.0 -unpause -urdf -model coach_nanny_robot -param robot_description" respawn="false" output="screen" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -unpause -urdf -model coach_nanny_robot -param robot_description" respawn="false" output="screen" />
 
   <rosparam file="$(find nanny_control)/config/coach_nanny_robot_diff_drive.yaml" command="load" ns="diff_drive_ctrl" />
 
@@ -27,4 +28,8 @@
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
     <param name="default_topic" value="/diff_drive_ctrl/cmd_vel"/>
   </node>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_front_laser"
+    args="0.26865 0 0.043175 0 0 0 1.0 /base_link /front_laser"/>
+
 </launch>
