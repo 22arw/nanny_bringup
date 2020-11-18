@@ -29,9 +29,8 @@
     <param name="default_topic" value="/diff_drive_ctrl/cmd_vel"/>
   </node>
 
-  <<node name="nanny_tf_broadcaster" pkg="nanny_bringup" type="nanny_tf_broadcaster" args="/coach_nanny_robot" output="screen"/>
+  <node name="nanny_tf_broadcaster" pkg="nanny_bringup" type="nanny_tf_broadcaster" args="/coach_nanny_robot" output="screen"/>
   
-
   <!-- This is really only temporary untill a proper TF is made -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model coach_nanny_robot -param robot_description" output="screen"/>
   
