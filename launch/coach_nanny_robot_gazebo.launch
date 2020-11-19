@@ -33,7 +33,7 @@
   <node name="nanny_base_link_tf_ls" pkg="nanny_bringup" type="nanny_base_link_tf_ls" output="screen"/> -->
 
   <!-- This is really only temporary untill a proper TF is made -->
-  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model coach_nanny_robot -param robot_description" output="screen"/> -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model coach_nanny_robot -param robot_description" output="screen"/>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" args="-model coach_nanny_robot -param robot_description"/>
 
