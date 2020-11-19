@@ -29,7 +29,7 @@
     <param name="default_topic" value="/diff_drive_ctrl/cmd_vel"/>
   </node>
 
-  <node name="nanny_base_link_tf_broadcaster" pkg="nanny_bringup" type="nanny_base_link_tf_broadcaster" args="/coach_nanny_robot" output="screen"/>
+  <node name="nanny_base_link_tf_br" pkg="nanny_bringup" type="nanny_base_link_tf_br" args="/coach_nanny_robot" output="screen"/>
   <node name="nanny_base_link_tf_ls" pkg="nanny_bringup" type="nanny_base_link_tf_ls" output="screen"/>
 
   <!-- This is really only temporary untill a proper TF is made -->
