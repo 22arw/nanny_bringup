@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="model" default="$(find nanny_description)/urdf/coach_nanny_robot.urdf"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="world_name" value="$(find nanny_gazebo)/worlds/grocery_store.world"/>
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -unpause -urdf -model coach_nanny_robot -param robot_description" respawn="false" output="screen" />
+
+  <rosparam file="$(find nanny_control)/config/coach_nanny_robot_diff_drive.yaml" command="load" ns="diff_drive_ctrl" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="diff_drive_ctrl" />
+
+  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="/diff_drive_ctrl/cmd_vel"/>
+  </node>
+
+  <!-- <node name="nanny_base_link_tf_br" pkg="nanny_bringup" type="nanny_base_link_tf_br" args="/coach_nanny_robot" output="screen"/>
+  <node name="nanny_base_link_tf_ls" pkg="nanny_bringup" type="nanny_base_link_tf_ls" output="screen"/> -->
+
+  <!-- This is really only temporary untill a proper TF is made -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model coach_nanny_robot -param robot_description" output="screen"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" args="-model coach_nanny_robot -param robot_description"/>
+
+  <!-- This is really only temporary untill a proper TF is made -->
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_front_laser" args="0.26865 0 0.043175 0 0 0 1.0 /base_link /front_laser"/> -->
+
+</launch>
