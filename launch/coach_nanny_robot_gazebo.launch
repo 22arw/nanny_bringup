@@ -6,7 +6,8 @@
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
-  <arg name="model" default="$(find nanny_description)/urdf/coach_nanny_robot.urdf"/>
+  <arg name="model" default="$(find nanny_description)/urdf/covid_killer_robot.urdf"/>
+  <arg name="yaw" default="1.5708"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="debug" value="$(arg debug)" />
@@ -19,7 +20,7 @@
 
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
 
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -unpause -urdf -model coach_nanny_robot -param robot_description" respawn="false" output="screen" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -unpause -urdf -model covid_killer_robot -param robot_description -Y $(arg yaw)" respawn="false" output="screen" />
 
   <rosparam file="$(find nanny_control)/config/coach_nanny_robot_diff_drive.yaml" command="load" ns="diff_drive_ctrl" />
 
@@ -33,18 +34,11 @@
   <node name="nanny_base_link_tf_ls" pkg="nanny_bringup" type="nanny_base_link_tf_ls" output="screen"/> -->
 
   <!-- This is really only temporary untill a proper TF is made -->
-  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model coach_nanny_robot -param robot_description" output="screen"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model covid_killer_robot -param robot_description" output="screen"/>
 
- <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" args="-model coach_nanny_robot -param robot_description"/>
--->
+ <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" args="-model covid_killer_robot -param robot_description"/>
   <!-- This is really only temporary untill a proper TF is made -->
   <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_front_laser" args="0.26865 0 0.043175 0 0 0 1.0 /base_link /front_laser"/> -->
-  <node pkg="nanny_bringup" type="nanny_front_laser_tf_br" name="front_laser_broadcaster_frame" />
-  <node pkg="nanny_bringup" type="nanny_rear_laser_tf_br" name="rear_laser_broadcaster_frame" />
-  <node pkg="nanny_bringup" type="nanny_left_wheel_tf_br" name="left_wheel_broadcaster_frame" />
-  <node pkg="nanny_bringup" type="nanny_right_wheel_tf_br" name="right_wheel_broadcaster_frame" />
-  <node pkg="nanny_bringup" type="nanny_left_swivel_tf_br" name="left_swivel_broadcaster_frame" />
-  <node pkg="nanny_bringup" type="nanny_right_swivel_tf_br" name="right_swivel_broadcaster_frame" />
-  <node pkg="nanny_bringup" type="nanny_right_caster_tf_br" name="right_caster_broadcaster_frame" />
-  <node pkg="nanny_bringup" type="nanny_left_caster_tf_br" name="left_caster_broadcaster_frame" />
+
+ 
 </launch>

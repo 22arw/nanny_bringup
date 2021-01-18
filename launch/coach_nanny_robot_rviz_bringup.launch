@@ -2,14 +2,14 @@
 <launch>
 
   <arg name="gui" default="false"/>
-  <arg name="model" default="$(find nanny_description)/urdf/coach_nanny_robot.urdf"/>
+  <arg name="model" default="$(find nanny_description)/urdf/covid_killer_robot.urdf"/>
   <arg name="rvizconfig" default="$(find nanny_rviz)/coach_rviz_config.rviz" />
 
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
 
   <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
   <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
-  
+ <!-- <include file="$(find nanny_bringup)/launch/nanny_robot_tfs.launch"/>-->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
 
