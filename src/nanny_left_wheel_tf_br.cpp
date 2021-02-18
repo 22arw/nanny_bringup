@@ -12,11 +12,11 @@ int main(int argc, char** argv){
   
   transformStamped.header.frame_id = "base_link";
   transformStamped.child_frame_id = "left_wheel";
-  transformStamped.transform.translation.x = 0.173356333637394;
-  transformStamped.transform.translation.y = 0.27870625;
-  transformStamped.transform.translation.z = 0.0487011859215695;
+  transformStamped.transform.translation.x = 0.28302;
+  transformStamped.transform.translation.y = 0;
+  transformStamped.transform.translation.z = 0.048701;
   tf2::Quaternion q;
-        q.setRPY(0, 0, 0);
+        q.setRPY(0, 0, -1.5708);
   transformStamped.transform.rotation.x = q.x();
   transformStamped.transform.rotation.y = q.y();
   transformStamped.transform.rotation.z = q.z();
@@ -31,4 +31,3 @@ int main(int argc, char** argv){
   }
 
 };
-

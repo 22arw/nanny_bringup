@@ -11,12 +11,12 @@ int main(int argc, char** argv){
 
   
   transformStamped.header.frame_id = "base_link";
-  transformStamped.child_frame_id = "left_swivel";
-  transformStamped.transform.translation.x = -0.1984;
-  transformStamped.transform.translation.y = 0.1964315;
-  transformStamped.transform.translation.z = 0.0925375;
+  transformStamped.child_frame_id = "back_left_swivel";
+  transformStamped.transform.translation.x = 0.254;
+  transformStamped.transform.translation.y = 0.254;
+  transformStamped.transform.translation.z = 0.092538;
   tf2::Quaternion q;
-        q.setRPY(0, 0, 0);
+        q.setRPY(0, 0, -1.5708);
   transformStamped.transform.rotation.x = q.x();
   transformStamped.transform.rotation.y = q.y();
   transformStamped.transform.rotation.z = q.z();

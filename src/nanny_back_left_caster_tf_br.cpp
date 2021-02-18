@@ -10,11 +10,11 @@ int main(int argc, char** argv){
   geometry_msgs::TransformStamped transformStamped;
 
   
-  transformStamped.header.frame_id = "right_swivel";
-  transformStamped.child_frame_id = "right_caster";
+  transformStamped.header.frame_id = "back_left_swivel";
+  transformStamped.child_frame_id = "back_left_caster";
   transformStamped.transform.translation.x = -0.04445;
-  transformStamped.transform.translation.y = -0.000508000000000036;
-  transformStamped.transform.translation.z = -0.0714375;
+  transformStamped.transform.translation.y = 0;
+  transformStamped.transform.translation.z = -0.071438;
   tf2::Quaternion q;
         q.setRPY(0, 0, 0);
   transformStamped.transform.rotation.x = q.x();
@@ -29,4 +29,4 @@ int main(int argc, char** argv){
     printf("sending\n");
   }
 
-};
+}; 

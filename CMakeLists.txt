@@ -67,29 +67,49 @@ add_executable(nanny_right_wheel_tf_br src/nanny_right_wheel_tf_br.cpp)
 target_link_libraries(nanny_right_wheel_tf_br
  ${catkin_LIBRARIES}
 )
-#left swivel
-add_executable(nanny_left_swivel_tf_br src/nanny_left_swivel_tf_br.cpp)
-target_link_libraries(nanny_left_swivel_tf_br
+#front left swivel
+add_executable(nanny_front_left_swivel_tf_br src/nanny_front_left_swivel_tf_br.cpp)
+target_link_libraries(nanny_front_left_swivel_tf_br
  ${catkin_LIBRARIES}
 )
-#right swivel
-add_executable(nanny_right_swivel_tf_br src/nanny_right_swivel_tf_br.cpp)
-target_link_libraries(nanny_right_swivel_tf_br
+#front right swivel
+add_executable(nanny_front_right_swivel_tf_br src/nanny_front_right_swivel_tf_br.cpp)
+target_link_libraries(nanny_front_right_swivel_tf_br
  ${catkin_LIBRARIES}
 )
-#right caster
-add_executable(nanny_right_caster_tf_br src/nanny_right_caster_tf_br.cpp)
-target_link_libraries(nanny_right_caster_tf_br
+#front right caster
+add_executable(nanny_front_right_caster_tf_br src/nanny_front_right_caster_tf_br.cpp)
+target_link_libraries(nanny_front_right_caster_tf_br
  ${catkin_LIBRARIES}
 )
-#left caster
-add_executable(nanny_left_caster_tf_br src/nanny_left_caster_tf_br.cpp)
-target_link_libraries(nanny_left_caster_tf_br
+#front left caster
+add_executable(nanny_front_left_caster_tf_br src/nanny_front_left_caster_tf_br.cpp)
+target_link_libraries(nanny_front_left_caster_tf_br
+ ${catkin_LIBRARIES}
+)
+#back left swivel
+add_executable(nanny_back_left_swivel_tf_br src/nanny_back_left_swivel_tf_br.cpp)
+target_link_libraries(nanny_back_left_swivel_tf_br
+ ${catkin_LIBRARIES}
+)
+#back right swivel
+add_executable(nanny_back_right_swivel_tf_br src/nanny_back_right_swivel_tf_br.cpp)
+target_link_libraries(nanny_back_right_swivel_tf_br
+ ${catkin_LIBRARIES}
+)
+#back right caster
+add_executable(nanny_back_right_caster_tf_br src/nanny_back_right_caster_tf_br.cpp)
+target_link_libraries(nanny_back_right_caster_tf_br
+ ${catkin_LIBRARIES}
+)
+#back left caster
+add_executable(nanny_back_left_caster_tf_br src/nanny_back_left_caster_tf_br.cpp)
+target_link_libraries(nanny_back_left_caster_tf_br
  ${catkin_LIBRARIES}
 )
 
 # Install the executable
-install(TARGETS nanny_tf_broadcaster nanny_base_link_tf_br nanny_tf_listener nanny_base_link_tf_ls  nanny_front_laser_tf_br nanny_rear_laser_tf_br nanny_left_wheel_tf_br nanny_right_wheel_tf_br nanny_left_swivel_tf_br nanny_right_swivel_tf_br nanny_right_caster_tf_br nanny_left_caster_tf_br
+install(TARGETS nanny_tf_broadcaster nanny_base_link_tf_br nanny_tf_listener nanny_base_link_tf_ls  nanny_front_laser_tf_br nanny_rear_laser_tf_br nanny_left_wheel_tf_br nanny_right_wheel_tf_br nanny_front_left_swivel_tf_br nanny_front_right_swivel_tf_br nanny_front_right_caster_tf_br nanny_front_left_caster_tf_br nanny_back_left_swivel_tf_br nanny_back_right_swivel_tf_br nanny_back_right_caster_tf_br nanny_back_left_caster_tf_br
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
