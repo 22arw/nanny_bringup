@@ -14,4 +14,18 @@
   <node pkg="nanny_bringup" type="nanny_back_right_caster_tf_br" name="back_right_caster_broadcaster_frame" />
   <node pkg="nanny_bringup" type="nanny_back_left_caster_tf_br" name="back_left_caster_broadcaster_frame" />
 
+  <node name="nanny_base_link_tf_ls" pkg="nanny_bringup" type="nanny_base_link_tf_ls" args="/coach_nanny_robot" output="screen"/>
+  <node pkg="nanny_bringup" type="nanny_front_laser_tf_ls" name="front_laser_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_rear_laser_tf_ls" name="rear_laser_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_left_wheel_tf_ls" name="left_wheel_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_right_wheel_tf_ls" name="right_wheel_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_front_left_swivel_tf_ls" name="front_left_swivel_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_front_right_swivel_tf_ls" name="front_right_swivel_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_front_right_caster_tf_ls" name="front_right_caster_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_front_left_caster_tf_ls" name="front_left_caster_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_back_left_swivel_tf_ls" name="back_swivel_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_back_right_swivel_tf_ls" name="back_right_swivel_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_back_right_caster_tf_ls" name="back_right_caster_listener_frame" />
+  <node pkg="nanny_bringup" type="nanny_back_left_caster_tf_ls" name="back_left_caster_listener_frame" />
+
 </launch>

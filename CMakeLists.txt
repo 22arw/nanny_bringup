@@ -47,69 +47,130 @@ endif()
 
 target_link_libraries(nanny_base_link_tf_ls ${catkin_LIBRARIES})
 
-#front laser
+#front laser broadcaster
 add_executable(nanny_front_laser_tf_br src/nanny_front_laser_tf_br.cpp)
 target_link_libraries(nanny_front_laser_tf_br
  ${catkin_LIBRARIES}
 )
-#rear laser
+#rear laser broadcaster
 add_executable(nanny_rear_laser_tf_br src/nanny_rear_laser_tf_br.cpp)
 target_link_libraries(nanny_rear_laser_tf_br
  ${catkin_LIBRARIES}
 )
-#left wheel
+#left wheel broadcaster
 add_executable(nanny_left_wheel_tf_br src/nanny_left_wheel_tf_br.cpp)
 target_link_libraries(nanny_left_wheel_tf_br
  ${catkin_LIBRARIES}
 )
-#right wheel
+#right wheel broadcaster
 add_executable(nanny_right_wheel_tf_br src/nanny_right_wheel_tf_br.cpp)
 target_link_libraries(nanny_right_wheel_tf_br
  ${catkin_LIBRARIES}
 )
-#front left swivel
+#front left swivel broadcaster
 add_executable(nanny_front_left_swivel_tf_br src/nanny_front_left_swivel_tf_br.cpp)
 target_link_libraries(nanny_front_left_swivel_tf_br
  ${catkin_LIBRARIES}
 )
-#front right swivel
+#front right swivel broadcaster
 add_executable(nanny_front_right_swivel_tf_br src/nanny_front_right_swivel_tf_br.cpp)
 target_link_libraries(nanny_front_right_swivel_tf_br
  ${catkin_LIBRARIES}
 )
-#front right caster
+#front right caster broadcaster
 add_executable(nanny_front_right_caster_tf_br src/nanny_front_right_caster_tf_br.cpp)
 target_link_libraries(nanny_front_right_caster_tf_br
  ${catkin_LIBRARIES}
 )
-#front left caster
+#front left caster broadcaster
 add_executable(nanny_front_left_caster_tf_br src/nanny_front_left_caster_tf_br.cpp)
 target_link_libraries(nanny_front_left_caster_tf_br
  ${catkin_LIBRARIES}
 )
-#back left swivel
+#back left swivel broadcaster
 add_executable(nanny_back_left_swivel_tf_br src/nanny_back_left_swivel_tf_br.cpp)
 target_link_libraries(nanny_back_left_swivel_tf_br
  ${catkin_LIBRARIES}
 )
-#back right swivel
+#back right swivel broadcaster
 add_executable(nanny_back_right_swivel_tf_br src/nanny_back_right_swivel_tf_br.cpp)
 target_link_libraries(nanny_back_right_swivel_tf_br
  ${catkin_LIBRARIES}
 )
-#back right caster
+#back right caster broadcaster
 add_executable(nanny_back_right_caster_tf_br src/nanny_back_right_caster_tf_br.cpp)
 target_link_libraries(nanny_back_right_caster_tf_br
  ${catkin_LIBRARIES}
 )
-#back left caster
+#back left caster broadcaster
 add_executable(nanny_back_left_caster_tf_br src/nanny_back_left_caster_tf_br.cpp)
 target_link_libraries(nanny_back_left_caster_tf_br
  ${catkin_LIBRARIES}
 )
 
+#front laser listener
+add_executable(nanny_front_laser_tf_ls src/nanny_front_laser_tf_ls.cpp)
+target_link_libraries(nanny_front_laser_tf_ls
+ ${catkin_LIBRARIES}
+)
+#rear laser listener
+add_executable(nanny_rear_laser_tf_ls src/nanny_rear_laser_tf_ls.cpp)
+target_link_libraries(nanny_rear_laser_tf_ls
+ ${catkin_LIBRARIES}
+)
+#left wheel listener
+add_executable(nanny_left_wheel_tf_ls src/nanny_left_wheel_tf_ls.cpp)
+target_link_libraries(nanny_left_wheel_tf_ls
+ ${catkin_LIBRARIES}
+)
+#right wheel listener
+add_executable(nanny_right_wheel_tf_ls src/nanny_right_wheel_tf_ls.cpp)
+target_link_libraries(nanny_right_wheel_tf_ls
+ ${catkin_LIBRARIES}
+)
+#front left swivel listener
+add_executable(nanny_front_left_swivel_tf_ls src/nanny_front_left_swivel_tf_ls.cpp)
+target_link_libraries(nanny_front_left_swivel_tf_ls
+ ${catkin_LIBRARIES}
+)
+#front right swivel listener
+add_executable(nanny_front_right_swivel_tf_ls src/nanny_front_right_swivel_tf_ls.cpp)
+target_link_libraries(nanny_front_right_swivel_tf_ls
+ ${catkin_LIBRARIES}
+)
+#front right caster listener
+add_executable(nanny_front_right_caster_tf_ls src/nanny_front_right_caster_tf_ls.cpp)
+target_link_libraries(nanny_front_right_caster_tf_ls
+ ${catkin_LIBRARIES}
+)
+#front left caster listener
+add_executable(nanny_front_left_caster_tf_ls src/nanny_front_left_caster_tf_ls.cpp)
+target_link_libraries(nanny_front_left_caster_tf_ls
+ ${catkin_LIBRARIES}
+)
+#back left swivel listener
+add_executable(nanny_back_left_swivel_tf_ls src/nanny_back_left_swivel_tf_ls.cpp)
+target_link_libraries(nanny_back_left_swivel_tf_ls
+ ${catkin_LIBRARIES}
+)
+#back right swivel listener
+add_executable(nanny_back_right_swivel_tf_ls src/nanny_back_right_swivel_tf_ls.cpp)
+target_link_libraries(nanny_back_right_swivel_tf_ls
+ ${catkin_LIBRARIES}
+)
+#back right caster listener
+add_executable(nanny_back_right_caster_tf_ls src/nanny_back_right_caster_tf_ls.cpp)
+target_link_libraries(nanny_back_right_caster_tf_ls
+ ${catkin_LIBRARIES}
+)
+#back left caster listener
+add_executable(nanny_back_left_caster_tf_ls src/nanny_back_left_caster_tf_ls.cpp)
+target_link_libraries(nanny_back_left_caster_tf_ls
+ ${catkin_LIBRARIES}
+)
+
 # Install the executable
-install(TARGETS nanny_tf_broadcaster nanny_base_link_tf_br nanny_tf_listener nanny_base_link_tf_ls  nanny_front_laser_tf_br nanny_rear_laser_tf_br nanny_left_wheel_tf_br nanny_right_wheel_tf_br nanny_front_left_swivel_tf_br nanny_front_right_swivel_tf_br nanny_front_right_caster_tf_br nanny_front_left_caster_tf_br nanny_back_left_swivel_tf_br nanny_back_right_swivel_tf_br nanny_back_right_caster_tf_br nanny_back_left_caster_tf_br
+install(TARGETS nanny_tf_broadcaster nanny_base_link_tf_br nanny_front_laser_tf_br nanny_rear_laser_tf_br nanny_left_wheel_tf_br nanny_right_wheel_tf_br nanny_front_left_swivel_tf_br nanny_front_right_swivel_tf_br nanny_front_right_caster_tf_br nanny_front_left_caster_tf_br nanny_back_left_swivel_tf_br nanny_back_right_swivel_tf_br nanny_back_right_caster_tf_br nanny_back_left_caster_tf_br nanny_tf_listener nanny_base_link_tf_ls  nanny_front_laser_tf_ls nanny_rear_laser_tf_ls nanny_left_wheel_tf_ls nanny_right_wheel_tf_ls nanny_front_left_swivel_tf_ls nanny_front_right_swivel_tf_ls nanny_front_right_caster_tf_ls nanny_front_left_caster_tf_ls nanny_back_left_swivel_tf_ls nanny_back_right_swivel_tf_ls nanny_back_right_caster_tf_ls nanny_back_left_caster_tf_ls
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
