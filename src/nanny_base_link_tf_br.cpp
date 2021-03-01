@@ -12,7 +12,7 @@ void poseCallback(const geometry_msgs::PoseConstPtr& msg){
     geometry_msgs::TransformStamped tfStamped;
 
     tfStamped.header.stamp = ros::Time::now();
-    tfStamped.header.frame_id = "/odom";
+    tfStamped.header.frame_id = "odom";
     tfStamped.child_frame_id = robot_name;
     tfStamped.transform.translation.x = msg -> position.x;
     tfStamped.transform.translation.y = msg -> position.y;

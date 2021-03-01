@@ -13,7 +13,7 @@ int main(int argc, char** argv){
   transformStamped.header.frame_id = "base_link";
   transformStamped.child_frame_id = "front_right_swivel";
   transformStamped.transform.translation.x = -0.254;
-  transformStamped.transform.translation.y = 0.254;
+  transformStamped.transform.translation.y = -0.254;
   transformStamped.transform.translation.z = 0.092538;
   tf2::Quaternion q;
         q.setRPY(0, 0, -1.5708);

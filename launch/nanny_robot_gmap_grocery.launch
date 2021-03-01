@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+
+<!-- Gazebo sim settings -->
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="model" default="$(find nanny_description)/urdf/covid_killer_robot.urdf"/>
+  <arg name="yaw" default="1.5708"/>
+
+<!-- Pull in grocery store world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="world_name" value="$(find nanny_gazebo)/worlds/grocery_store.world"/>
+  </include>
+
+<!-- Pull tf broadcasters and listeners  -->
+  <include file="$(find nanny_bringup)/launch/nanny_robot_tfs.launch"/>
+
+<!-- Launch gmapping from nanny_navigation package  -->
+  <include file="$(find nanny_navigation)/launch/nanny_mapping.launch"/>
+
+<!-- Spawn URDF -->
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -unpause -urdf -model covid_killer_robot -param robot_description -Y $(arg yaw)" respawn="false" output="screen" />
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model covid_killer_robot -param robot_description" output="screen"/>
+
+<!-- Launch controllers & steering -->
+  <rosparam file="$(find nanny_control)/config/coach_nanny_robot_diff_drive.yaml" command="load" ns="diff_drive_ctrl" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="diff_drive_ctrl" />
+  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+    <param name="default_topic" value="/diff_drive_ctrl/cmd_vel"/>
+  </node>
+
+</launch>
