@@ -18,7 +18,7 @@ int main(int argc, char** argv){
         geometry_msgs::TransformStamped tfStamped;
 
         try {
-            tfBuffer.canTransform("rear_laser", "base_link", ros::Time(0));
+            tfBuffer.canTransform("rear_laser", "base_link", ros::Time(0),ros::Duration(10.0));
             tfStamped = tfBuffer.lookupTransform("rear_laser", "base_link", ros::Time(0));
         }
         catch (tf2::LookupException &ex) {

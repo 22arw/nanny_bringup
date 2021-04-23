@@ -8,7 +8,7 @@
   <arg name="headless" default="false"/>
   <arg name="debug" default="false"/>
   <arg name="model" default="$(find nanny_description)/urdf/covid_killer_robot.urdf"/>
-  <arg name="yaw" default="1.5708"/>
+ <!-- <arg name="yaw" default="1.5708"/>-->
 
 <!-- Pull in grocery store world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -20,11 +20,11 @@
     <arg name="world_name" value="$(find nanny_gazebo)/worlds/grocery_store.world"/>
   </include>
 
-<!-- Pull tf broadcasters and listeners  -->
-  <include file="$(find nanny_bringup)/launch/nanny_robot_tfs.launch"/>
-
+<!-- Pull tf broadcasters and listeners -->
+  <include file="$(find nanny_bringup)/launch/nanny_robot_tfs.launch"/> <!--
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" args="-model covid_killer_robot -param robot_description"/>-->
 <!-- Launch amcl localization from nanny_navigation package  -->
-  <!--<include file="$(find nanny_navigation)/launch/nanny_navigation.launch"/>-->
+  <include file="$(find nanny_navigation)/launch/nanny_navigation.launch"/>
 
 <!-- Launch map_server for /map topic -->
     <arg name="map_file" value="$(find nanny_navigation)/config/map.yaml"></arg>
@@ -32,7 +32,7 @@
 
 <!-- Spawn URDF -->
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -unpause -urdf -model covid_killer_robot -param robot_description -Y $(arg yaw)" respawn="false" output="screen" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-z 0.1 -unpause -urdf -model covid_killer_robot -param robot_description " respawn="false" output="screen" />
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="-model covid_killer_robot -param robot_description" output="screen"/>
 
 <!-- Launch controllers & steering -->
@@ -41,5 +41,6 @@
   <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
     <param name="default_topic" value="/diff_drive_ctrl/cmd_vel"/>
   </node>
+
 
 </launch>

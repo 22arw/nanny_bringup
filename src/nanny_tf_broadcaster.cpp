@@ -18,7 +18,7 @@ void poseCallback(const turtlesim::PoseConstPtr& msg){
     transformStamped.transform.translation.z = 0.0;
 
     tf2::Quaternion q;
-    q.setRPY(0, 0, msg->theta);
+    q.setRPY(0, 0,0);
 
     transformStamped.transform.rotation.x = q.x();
     transformStamped.transform.rotation.y = q.y();

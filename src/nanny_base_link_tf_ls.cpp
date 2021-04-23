@@ -19,7 +19,7 @@ int main(int argc, char** argv){
 
         try {
 
-            tfStamped = tfBuffer.lookupTransform("base_link", "odom", ros::Time(0));
+            tfStamped = tfBuffer.lookupTransform("base_link", "odom", ros::Time(0),ros::Duration(3.0));
             
         }
         catch (tf2::LookupException &ex) {
