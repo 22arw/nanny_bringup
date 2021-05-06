@@ -5,12 +5,19 @@ Transform frames can be created in matlab using the tf2_ros tool
 
 <h3>Launch</h3>
 This folder contains launch files.  To launch a file, in the terminal type roslaunch <folder name> <launch file name>
+  </br>
 coach_nanny_robot_gazebo.launch - launches the starting pen environment in gazebo
+  </br>
 coach_nanny_robot_rviz_bringup.launch - launches rviz with the robot
+ </br>
 nanny_robot_full_sim.launch - launches the store, the robot, gmapping, localization, and rviz
+  </br>
 nanny_robot_gmap_grocery.launch - launches the store, the robot, and gmapping
+ </br>
 nanny_robot_localization.launch - launches the store, the robot, and the amcl localization
+ </br>
 nanny_robot_store_world.launch - launches the robot and store in gazebo
+ </br>
 nanny_robot_tfs.launch - file for all the transform frames. You can add these to other launch files using: <include file="$(find nanny_bringup)/launch/nanny_robot_tfs.launch"/>
 
 <h3>Transform frames</h3>
