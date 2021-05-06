@@ -18,7 +18,9 @@ nanny_robot_localization.launch - launches the store, the robot, and the amcl lo
  </br>
 nanny_robot_store_world.launch - launches the robot and store in gazebo
  </br>
-nanny_robot_tfs.launch - file for all the transform frames. You can add these to other launch files using: <include file="$(find nanny_bringup)/launch/nanny_robot_tfs.launch"/>
+nanny_robot_tfs.launch - file for all the transform frames. You can add these to other launch files using: 
+</br>
+<include file="$(find nanny_bringup)/launch/nanny_robot_tfs.launch"/>
 
 <h3>Transform frames</h3>
 Tf(transform frames) is a package that lets the user keep track of multiple coordinate frames over time. Tf maintains the relationship between coordinate frames in a tree structure buffered in time, and lets the user transform points, vectors, etc between any two coordinate frames at any desired point in time.
